@@ -1,0 +1,57 @@
+body, h1, h2, h3, h4, h5, h6 {
+    font-family: "gesta",sans-serif;
+    font-style: normal;
+    font-weight: 300;
+}
+
+p, div, legend {
+    font-family: "gesta",sans-serif;
+    font-style: normal;
+    font-weight: 300;
+}
+
+.jumbotron {
+    display:inline-block;
+    padding: 10px;
+}
+
+.newComment {
+    padding-top: 30px;
+}
+
+.navbar-brand {
+    font-weight: bold;
+}
+.positive {
+    color: green;
+}
+.negative {
+    color: red;
+}
+
+.ng-enter {
+  transition:0.4s ease all;
+  opacity:0;
+  transform:translateX(-100%);
+}
+
+.ng-enter.ng-enter-active {
+  opacity:1;
+  transform:translateX(0);
+}
+
+.ng-leave {
+  transition:0.4s ease all;
+  opacity:1;
+  transform:translateX(0);
+}
+
+.ng-leave.ng-leave-active {
+  opacity:0;
+  transform:translateX(-100%);
+}
+
+.ng-enter-stagger, .ng-leave-stagger {
+  transition-delay: 0.2s;
+  transition-duration:0;
+}

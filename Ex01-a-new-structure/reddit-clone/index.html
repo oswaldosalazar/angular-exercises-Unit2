@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Real Reddit</title>
+        <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+        <script src="https://use.typekit.net/tdh2twx.js"></script>
+        <script>try{Typekit.load({ async: true });}catch(e){}</script>
+        <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-T8Gy5hrqNKT+hzMclPo118YTQO6cYprQmhrYwIiQ/3axmI1hQomh7Ud2hPOy8SP1" crossorigin="anonymous">
+        <link rel="stylesheet" href="styles.css">
+    </head>
+    <body ng-app="myApp">
+        <div ng-controller="postsController">
+            <nav class="navbar navbar-default">
+                <div class="container-fluid">
+                    <div class="navbar-header">
+                    <a class="navbar-brand">Real Reddit</a>
+                    </div>
+                    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                        <ul class="nav navbar-nav">
+                            <li><a class="btn" ng-click="showSubmitPost()">+ Submit Post</a></li>
+                            <li class="dropdown">
+                                <a class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Sort by {{ sortType }}<span class="caret"></span></a>
+                                <ul class="dropdown-menu" role="menu">
+                                    <li ng-repeat="type in sort"><a ng-click="assignType(type)">{{ type }}</a></li>
+                                </ul>
+                            </li>
+                        </ul>
+                        <form class="navbar-form navbar-left" role="search">
+                            <div class="form-group">
+                                <input type="text" class="form-control" placeholder="Search" ng-model="list.search">
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </nav>
+            <form ng-show="list.showPostForm" class="container form-horizontal" ng-submit="addPost()">
+                <fieldset>
+                    <div class="form-group">
+                        <label for="title" class="col-lg-2 control-label">Title</label>
+                        <div class="">
+                            <input name="title" type="text" class="form-control col-lg-10" id="title" placeholder="Title" ng-model="newPost.title" required>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="author" class="col-lg-2 control-label">Author</label>
+                        <div class="">
+                            <input name="author" type="text" class="form-control col-lg-10" id="author" placeholder="Author" ng-model="newPost.author" required>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="imageUrl" class="col-lg-2 control-label">Image URL</label>
+                        <div class="">
+                            <input name="imageUrl" type="text" class="form-control col-lg-10" id="imageUrl" placeholder="Image URL" ng-model="newPost.imageUrl" required>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="description" class="col-lg-2 control-label">Description</label>
+                        <div class="">
+                            <input name="description" type="text" class="form-control col-lg-10" id="description" placeholder="Description" ng-model="newPost.description" required>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="form-group">
+                            <div class="col-lg-10 col-lg-offset-2">
+                                <button type="reset" class="btn btn-default" ng-click="hideSubmitPost()">Cancel</button>
+                                <button type="submit" class="btn btn-primary">Submit</button>
+                            </div>
+                        </div>
+                    </div>
+                </fieldset>
+            </form>
+            <div ng-repeat="item in list | orderBy:sortType:sortTypeReverse | filter: list.search">
+                <div class="jumbotron">
+                    <div class="col-md-4">
+                        <img ng-src={{item.imageUrl}} alt="Mountains" />
+                    </div>
+                    <div class="col-sm-8">
+                        <h3>{{ item.title }}  |  <span ng-class='{positive: item.votes > 0, negative: item.votes <0}'><strong>{{ item.votes }}</strong></span>
+                        <a class="btn" ng-click="increaseVotes(item)"><i class="fa fa-lg fa-arrow-up" aria-hidden="true"></i></a>
+                        <a class="btn" ng-click="decreaseVotes(item)"><i class="fa fa-lg fa-arrow-down" aria-hidden="true"></i></a>
+                        </h3>
+                        <h4>By {{ item.author }}</h4>
+                        <h4>{{ item.description }}</h4>
+                        <div class="col-sm-4">
+                                <i class="fa fa-calendar" aria-hidden="true"></i> {{ item.date | amCalendar }}
+                        </div>
+                        <div class="col-sm-4">
+                            <a ng-click="showComments(item)">
+                                <i class="fa fa-comment p-l" aria-hidden="true"></i> {{ item.comments.length }}
+                                <ng-pluralize
+                                count="item.comments.length"
+                                when="{
+                                    '0': 'Comments',
+                                    'one': 'Comment',
+                                    'other': 'Comments',
+                                }">
+                                <!-- Comments -->
+                            </a>
+                        </div>
+                        <div class="col-sm-4">
+                            <a ng-click="showCommentForm(item)">
+                                <i class="fa fa-pencil-square-o p-l-20px" aria-hidden="true"></i> Add Comment
+                            </a>
+                        </div>
+                        <!-- {{ item.comments }} -->
+                        <div ng-show="item.showComments" class="col-sm-6 col-sm-offset-3">
+                            <div ng-repeat="comment in item.comments">
+                                <h5> <strong>{{ comment.commentAuthor }}: </strong> {{ comment.commentText }}</h5>
+                            </div>
+                        </div>
+                        <div ng-show="item.showCommentForm">
+                            <div class="newComment">
+                              	<form ng-submit="addComment(item)" class="form-inline">
+                                    <div class="row">
+                                        <div class="form-group">
+                                            <label class="col-md-3" for="commentAuthor">Author</label>
+                                            <div class="col-md-2">
+                                                <input type="text" class="form-control" id="commentAuthor" ng-model="newComment.commentAuthor" required>
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="col-md-3" for="commentText">Comment</label>
+                                            <div class="col-md-3">
+                                                <input type="text" class="form-control" id="commentText" ng-model="newComment.commentText"required>
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <div class="col-md-1">
+                                                <button type="submit" class="btn btn-default">Add Comment</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                               </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+        </div>
+    </body>
+    <script   src="https://code.jquery.com/jquery-3.1.1.slim.min.js"   integrity="sha256-/SIrNqv8h6QGKDuNoLGA4iret+kyesCkHGzVUUV0shc="   crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.15.1/moment.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/angular-moment/1.0.0/angular-moment.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.8/angular-animate.min.js"></script>
+    <script src="js/app.js"></script>
+    <script src="js/controller.js"></script>
+</html>
