@@ -18,9 +18,17 @@ p, div, input {
     margin: 0 auto;
 }
 
-.movies {
-    style: flex;
+.movieBox {
+    background: #F8F8FF;
 }
 
-.gray {
-  background: #f5f5f5; }
+.movieSize {
+    height: 300px;
+    /*overflow: hidden;*/
+    object-fit:cover;
+    padding-bottom: 50px;
+}
+
+.movieFooter {
+    color: black;
+}
