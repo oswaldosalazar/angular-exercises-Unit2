@@ -1,0 +1,26 @@
+<div ng-controller="inputController" layout="column" class="md-inline-form">
+    <md-content layout-gt-sm="column" layout-padding>
+
+        <div class="inputMovie">
+            <form ng-submit="search()" layout="column" layout-align="center center" layout-wrap>
+                <md-input-container>
+                    <label>Enter Movie Title</label>
+                    <input ng-model="movies.title">
+                </md-input-container>
+                <md-button type="submit" md-no-ink class="md-primary">Search</md-button>
+            </form>
+        </div>
+
+        <div ng-repeat="movie in movies.results" class="movies">
+            <md-grid-list md-cols-xs="1" md-cols-sm="2" md-cols-md="4" md-cols-gt-md="6" md-row-height-gt-md="1:1" md-row-height="2:2" md-gutter="12px" md-gutter-gt-sm="8px">
+                <md-grid-tile class="gray" md-rowspan="2" md-colspan="2" md-colspan-sm="1" md-colspan-xs="1">
+                    <md-grid-tile-footer>
+                        <h3>{{ movie.Title }}  |  Year: {{ movie.Year }}</h3>
+                    </md-grid-tile-footer>
+                </md-grid-tile>
+            </md-grid-list>
+        </div>
+    </md-content>
+
+
+</div>
