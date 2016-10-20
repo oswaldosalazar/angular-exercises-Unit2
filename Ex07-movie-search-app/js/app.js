@@ -6,6 +6,9 @@ app.config(function($routeProvider, $locationProvider) {
         templateUrl: 'partials/home.html',
         controller: 'inputController'
     })
-    .otherwise({ redirectTo: '/' });
+    .when('/movie/:movieID', {
+        templateUrl: 'partials/movieDetails.html',
+        controller: 'movieController'
+    })
     $locationProvider.html5Mode(true);
 });

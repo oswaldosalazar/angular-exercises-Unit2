@@ -1,6 +1,5 @@
-<div ng-controller="inputController" layout="column" class="md-inline-form">
+<div layout="column" class="md-inline-form">
     <md-content layout-gt-sm="column" layout-padding>
-
         <div class="inputMovie">
             <form ng-submit="search()" layout="column" layout-align="center center" layout-wrap>
                 <md-input-container>
@@ -10,17 +9,15 @@
                 <md-button type="submit" md-no-ink class="md-primary">Search</md-button>
             </form>
         </div>
-
-            <md-grid-list md-cols="4" md-row-height="200px">
-                <md-grid-tile ng-repeat="movie in movies.results" class="movieBox" md-colspan="1" md-rowspan="2">
-                        <img class="movieSize" ng-src="{{ movie.Poster }}" alt="Movie Poster" />
-                    <md-grid-tile-footer class="movieFooter">
-                        <h3>{{ movie.Title }}</h3>
-                        <h3>Year: {{ movie.Year }}</h3>
-                    </md-grid-tile-footer>
-                </md-grid-tile>
-            </md-grid-list>
+        <md-grid-list md-cols="4" md-row-height="200px" md-gutter="12px">
+            <md-grid-tile ng-repeat="movie in movies.results" class="movieBox" md-colspan="1" md-rowspan="2">
+                <a ng-href="/movie/{{ movie.imdbID }}">
+                <img class="movieSize" ng-src="{{ movie.Poster }}" alt="Movie Poster" />
+                <md-grid-tile-footer class="movieFooter">
+                    <h3>{{ movie.Title }}</h3>
+                    <h3>Year: {{ movie.Year }}</h3>
+                </md-grid-tile-footer></a>
+            </md-grid-tile>
+        </md-grid-list>
     </md-content>
-
-
 </div>

@@ -24,11 +24,15 @@ p, div, input {
 
 .movieSize {
     height: 300px;
-    /*overflow: hidden;*/
+    overflow: hidden;
     object-fit:cover;
     padding-bottom: 50px;
 }
 
 .movieFooter {
     color: black;
+}
+
+.movieDetails {
+    padding-left: 40px;
 }

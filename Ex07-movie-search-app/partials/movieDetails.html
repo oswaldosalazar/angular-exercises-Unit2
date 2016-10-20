@@ -1,0 +1,22 @@
+<md-content layout-gt-sm="column" layout-padding>
+    <md-grid-list md-cols="1" md-row-height="200px" md-gutter="12px">
+        <md-grid-tile md-colspan="1" md-rowspan="2">
+            <img ng-src="{{ movies.results.Poster }}" alt="Movie Poster" />
+            <div class="movieDetails">
+                <h2><strong>{{ movies.results.Title }}</strong></h2>
+                <h4><strong>Genre: </strong>{{ movies.results.Genre }}<br>
+                <strong>Director: </strong>{{ movies.results.Director }}<br>
+                <strong>Actors: </strong>{{ movies.results.Actors }}<br>
+                <strong>Rated: </strong>{{ movies.results.Rated }}<br>
+                <strong>Release date: </strong>{{ movies.results.Released }}<br>
+                <strong>Runtime: </strong>{{ movies.results.Runtime }}<br>
+                <strong>Language: </strong>{{ movies.results.Language }}<br>
+                <strong>Country: </strong>{{ movies.results.Country }}<br>
+                <strong>Awards: </strong>{{ movies.results.Awards }}<br>
+                <strong>Metascore: </strong>{{ movies.results.Metascore }}<br>
+                <strong>imdb Rating: </strong>{{ movies.results.imdbRating }}<br>
+                <strong>Plot: </strong>{{ movies.results.Plot }}</h4>
+            </div>
+        </md-grid-tile>
+    </md-grid-list>
+</md-content>
