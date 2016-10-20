@@ -1,0 +1,38 @@
+<!-- <div ng-controller="serviceController" layout="column" class="md-inline-form">
+    <md-content layout-gt-sm="column" layout-padding>
+        {{ view.greeting }}
+        {{ view.users }}
+    </md-content>
+</div> -->
+
+<div ng-controller="CalcCtrl" class="md-menu-demo" ng-cloak>
+    <form ng-submit="calculate()" layout="row" layout-align=" center" layout-wrap>
+        <div>
+            <h1>RPN Calculator</h1>
+                <md-input-container>
+                    <label>n1</label>
+                    <input ng-model="view.n1">
+                </md-input-container>
+                <md-input-container>
+                    <label>n2</label>
+                    <input ng-model="view.n2">
+                </md-input-container>
+                <md-input-container>
+                    <label>Result</label>
+                    <input ng-model="view.result">
+                </md-input-container>
+        </div>
+        <div class="menus" layout="column" layout-fill layout-align="space-between center" style="min-height:30px;">
+            <md-menu md-offset="0 -7">
+              <md-button class="md-raised" ng-click="$mdOpenMenu($event)">
+                <p>OPERATION</p>
+              </md-button>
+              <md-menu-content width="1">
+                <md-menu-item ng-repeat="symbol in view.opSymbols">
+                  <md-button ng-click="calc(symbol, view.n1, view.n2)"><strong>{{ symbol }}</strong> </md-button>
+                </md-menu-item>
+              </md-menu-content>
+            </md-menu>
+        </div>
+    </form>
+</div>
