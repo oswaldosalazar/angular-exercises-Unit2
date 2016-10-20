@@ -3,36 +3,29 @@ body, h1, h2, h3, h4, h5, h6 {
     font-style: normal;
     font-weight: 300;
 }
-
 p, div, input {
     font-family: "gesta",sans-serif;
     font-style: normal;
     font-weight: 300;
 }
-
 .pageTitle {
     text-align: center;
 }
-
 .inputMovie {
     margin: 0 auto;
 }
-
 .movieBox {
     background: #F8F8FF;
 }
-
 .movieSize {
     height: 300px;
     overflow: hidden;
     object-fit:cover;
     padding-bottom: 50px;
 }
-
 .movieFooter {
     color: black;
 }
-
 .movieDetails {
     padding-left: 40px;
 }

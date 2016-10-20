@@ -9,6 +9,16 @@ app.controller("inputController", function($scope, $http) {
     }
 });
 
+app.controller("resultsController", function($scope, $http, $routeParams) {
+    $scope.movies = {};
+    var title = $routeParams.results;
+    var searchUrl = "http://www.omdbapi.com/?s="+title+"&y=&plot=short&r=json";
+    $http.get(searchUrl)
+    .then(function(movieData){
+        $scope.movies.results = movieData.data.Search;
+    });
+});
+
 app.controller("movieController", function($scope, $http, $routeParams) {
     $scope.movies = {};
     var movieID = $routeParams.movieID
@@ -16,6 +26,5 @@ app.controller("movieController", function($scope, $http, $routeParams) {
     $http.get(searchUrl)
     .then(function(movieData) {
         $scope.movies.results = movieData.data;
-        console.log($scope.movies.results);
     })
 });
