@@ -16,9 +16,23 @@
         <link rel="stylesheet" href="styles.css" media="screen" title="no title">
     </head>
     <body ng-cloak>
+    <div ng-controller="navController" ng-cloak>
+        <md-content class="md-padding">
+            <md-nav-bar md-selected-nav-item="currentNavItem" nav-bar-aria-label="navigation links">
+                <h1>LE THÉ</h1>
+                <md-nav-item md-nav-click="goto('homePage')" name="homePage">Home</md-nav-item>
+                <md-nav-item md-nav-click="goto('aboutPage')" name="aboutPage">About</md-nav-item>
+                <md-nav-item md-nav-click="goto('contactPage')" name="contactPage">Contact</md-nav-item>
+                <!-- these require actual routing with ui-router or ng-route, so they won't work in the demo -->
+            </md-nav-bar>
+                <!-- <div class="ext-content">
+                External content for `<span>{{currentNavItem}}</span>`
+                </div> -->
+        </md-content>
+    </div>
 
         <div class="pageTitle">
-            <h1>LE THÉ</h1>
+
         </div>
 
         <div ng-view></div>

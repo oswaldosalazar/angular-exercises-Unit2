@@ -1,5 +1,12 @@
+app.controller("navController", function($scope) {
+     $scope.currentNavItem = 'page1';
+})
+
 app.controller("teaController",function($scope) {
     $scope.view = {}
+    $scope.view.userState = '';
+    $scope.view.states = ('AL AK AZ AR CA CO CT DE FL GA HI ID IL IN IA KS KY LA ME MD MA MI MN MS MO MT NE NV NH NJ NM NY NC ND OH OK OR PA RI SC SD TN TX UT VT VA WA WV WI WY').split(' ').map(function (state) { return { abbrev: state };
+        });
     $scope.view.teaList = [
         {
             "_id": "55c8ee82152165d244b98300",
