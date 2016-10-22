@@ -1,0 +1,33 @@
+body, h1, h2, h3, h4, h5, h6 {
+    font-family: "gesta",sans-serif;
+    font-style: normal;
+    font-weight: 300;
+    -webkit-margin-before: 0em;
+}
+p, div, input {
+    font-family: "gesta",sans-serif;
+    font-style: normal;
+    font-weight: 300;
+}
+.gridListdemoBasicUsage md-grid-list {
+    margin: 8px;
+}
+.gridListdemoBasicUsage .green {
+    background: #b9f6ca;
+}
+.gridListdemoBasicUsage .yellow {
+    background: #ffff8d;
+}
+.gridListdemoBasicUsage .blue {
+    background: #84ffff;
+}
+.gridListdemoBasicUsage .red {
+    background: #ff8a80;
+}
+.gridListdemoBasicUsage md-grid-tile {
+    transition: all 400ms ease-out 50ms;
+}
+.teaDetails {
+    /*display: flex;
+    justify-content: flex-start;*/
+}
