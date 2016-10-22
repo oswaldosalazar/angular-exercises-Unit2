@@ -8,3 +8,12 @@ app.config(function($routeProvider, $locationProvider) {
     })
     $locationProvider.html5Mode(true);
 });
+
+app.filter('true_false', function() {
+    return function(text) {
+        if (text) {
+            return 'Yes';
+        }
+        return 'No';
+    }
+});

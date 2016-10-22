@@ -27,9 +27,8 @@ p, div, input {
 .gridListdemoBasicUsage md-grid-tile {
     transition: all 400ms ease-out 50ms;
 }
-.teaDetails {
-    /*display: flex;
-    justify-content: flex-start;*/
+.categorySearch {
+    padding-right: 30px;
 }
 .navBardemoBasicUsage md-content .ext-content {
     padding: 50px;

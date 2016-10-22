@@ -1,14 +1,23 @@
-<md-input-container>
-    <label>State</label>
-    <md-select ng-model="ctrl.userState">
-        <md-option><em>None</em></md-option>
-        <md-option ng-repeat="state in view.states" ng-value="state.abbrev" ng-disabled="$index === 1">
-          {{state.abbrev}}
-        </md-option>
-    </md-select>
-</md-input-container>
-
-
+<div class="searchOptions" layout="row">
+    <div class="categorySearch">
+        <md-input-container>
+            <label>Search by category</label>
+            <md-select ng-model="view.categoryInit">
+                <md-option><em>None</em></md-option>
+                <md-option ng-repeat="category in view.categoryList" ng-value="category">
+                    {{ category }}
+                </md-option>
+            </md-select>
+        </md-input-container>
+    </div>
+    <div class="nameSearch">
+        <i class="material-icons">search</i>
+        <md-input-container>
+            <label>Search by name</label>
+            <input ng-model="view.search">
+        </md-input-container>
+    </div>
+</div>
 <div  ng-repeat="tea in view.teaList" ng-cloak="" class="gridListdemoBasicUsage">
     <md-grid-list layout="row" layout-sm="column" md-cols-xs="6" md-cols-sm="6" md-cols-md="12" md-cols-gt-md="12" md-row-height-gt-md="6:6" md-row-height="6:6" md-gutter="12px" md-gutter-gt-sm="8px">
         <md-grid-tile class="blue" md-rowspan="3" md-colspan="3" md-colspan-sm="1" md-colspan-xs="1">
@@ -17,10 +26,10 @@
         <md-grid-tile class="red" md-rowspan="3" md-colspan="6" md-colspan-sm="1" md-colspan-xs="1">
             <div flex layout="column">
                 <h2>{{ tea.name }}</h2>
-                <h4>Price: {{ tea.price/100 | currency }}</h4>
-                <h4>Ingredients: {{ tea.ingredients }}</h4>
-                <h4>Rating: {{ tea.rating }}</h4>
-                <h4>In Stock: {{ tea.inStock }}</h4>
+                <h4>Price: {{ tea.price/100 | currency }} <br>
+                    Ingredients: {{ tea.ingredients }} <br>
+                    Rating: {{ tea.rating }} <br>
+                    In Stock: {{ tea.inStock | true_false }}</h4>
                 <ul><h4>Categories:</h4>
                 <h5 ng-repeat="category in tea.categories"><li>{{ category }}</li></h5>
                 </ul>

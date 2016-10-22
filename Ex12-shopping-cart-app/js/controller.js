@@ -3,10 +3,10 @@ app.controller("navController", function($scope) {
 })
 
 app.controller("teaController",function($scope) {
-    $scope.view = {}
-    $scope.view.userState = '';
-    $scope.view.states = ('AL AK AZ AR CA CO CT DE FL GA HI ID IL IN IA KS KY LA ME MD MA MI MN MS MO MT NE NV NH NJ NM NY NC ND OH OK OR PA RI SC SD TN TX UT VT VA WA WV WI WY').split(' ').map(function (state) { return { abbrev: state };
-        });
+    $scope.view = {};
+    $scope.view.search = '';
+    $scope.view.categoryInit = '';
+    $scope.view.categoryList = ('awesome cold dark dry hot lucid spring summer warm winter').split(' ').map(function (category) { return category });
     $scope.view.teaList = [
         {
             "_id": "55c8ee82152165d244b98300",
@@ -129,6 +129,5 @@ app.controller("teaController",function($scope) {
             "__v": 0,
             "categories": ["spring", "warm","winter"]
         }
-    ]
-
+    ];
 });
