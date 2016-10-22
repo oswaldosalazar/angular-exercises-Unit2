@@ -25,13 +25,13 @@
             <img ng-src="{{ tea.imageUrl }}" alt="" />
         </md-grid-tile>
         <md-grid-tile class="red" md-rowspan="3" md-colspan="6" md-colspan-sm="1" md-colspan-xs="1">
-            <div flex layout="column">
+            <div flex>
                 <h2>{{ tea.name }}</h2>
                 <h4>Price: {{ tea.price/100 | currency }} <br>
                     Ingredients: {{ tea.ingredients }} <br>
                     Rating: {{ tea.rating }} <br>
-                    In Stock: {{ tea.inStock | true_false }}</h4>
-                <ul><h4>Categories:</h4>
+                    In Stock: {{ tea.inStock | true_false }} <br>
+                <ul>Categories:</h4>
                 <h5 ng-repeat="category in tea.categories"><li>{{ category }}</li></h5>
                 </ul>
             </div>
