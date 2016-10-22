@@ -2,7 +2,7 @@
     <div class="categorySearch">
         <md-input-container>
             <label>Search by category</label>
-            <md-select ng-model="view.categoryInit">
+            <md-select ng-model="view.categorySelected">
                 <md-option><em>None</em></md-option>
                 <md-option ng-repeat="category in view.categoryList" ng-value="category">
                     {{ category }}
@@ -18,7 +18,8 @@
         </md-input-container>
     </div>
 </div>
-<div  ng-repeat="tea in view.teaList" ng-cloak="" class="gridListdemoBasicUsage">
+
+<div  ng-repeat="tea in view.teaList | filter: view.categorySelected" ng-cloak="" class="gridListdemoBasicUsage">
     <md-grid-list layout="row" layout-sm="column" md-cols-xs="6" md-cols-sm="6" md-cols-md="12" md-cols-gt-md="12" md-row-height-gt-md="6:6" md-row-height="6:6" md-gutter="12px" md-gutter-gt-sm="8px">
         <md-grid-tile class="blue" md-rowspan="3" md-colspan="3" md-colspan-sm="1" md-colspan-xs="1">
             <img ng-src="{{ tea.imageUrl }}" alt="" />

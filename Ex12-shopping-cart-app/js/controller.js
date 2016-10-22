@@ -5,7 +5,7 @@ app.controller("navController", function($scope) {
 app.controller("teaController",function($scope) {
     $scope.view = {};
     $scope.view.search = '';
-    $scope.view.categoryInit = '';
+    $scope.view.categorySelected = '';
     $scope.view.categoryList = ('awesome cold dark dry hot lucid spring summer warm winter').split(' ').map(function (category) { return category });
     $scope.view.teaList = [
         {
