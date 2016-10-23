@@ -4,9 +4,6 @@ app.controller("navController", function($scope) {
 
 app.controller("teaController",function($scope) {
     $scope.view = {};
-    $scope.view.nameSearch = '';
-    $scope.view.categorySelected = '';
-    $scope.view.categoryList = ('awesome cold dark dry hot lucid spring summer warm winter').split(' ').map(function (category) { return category });
     $scope.view.teaList = [
         {
             "_id": "55c8ee82152165d244b98300",
@@ -130,9 +127,21 @@ app.controller("teaController",function($scope) {
             "categories": ["spring", "warm","winter"]
         }
     ];
+    $scope.view.nameSearch = '';
+    $scope.view.categorySelected = '';
+    $scope.view.categoryList = ('awesome cold dark dry hot lucid spring summer warm winter').split(' ').map(function (category) { return category });
     $scope.view.teaList = $scope.view.teaList.map(function(tea) {
         tea.quantity = 0;
         return tea;
     });
-
+    $scope.sortingType = "_id";
+    $scope.view.priceType = ["lowest", "highest"];
+    $scope.assignType = function(sorting) {
+        $scope.sortingType = "price";
+        if(sorting === "lowest") {
+            $scope.sortTypeReverse = false;
+        } else {
+            $scope.sortTypeReverse = true;
+        }
+    }
 });

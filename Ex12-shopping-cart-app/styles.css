@@ -31,14 +31,17 @@ p, div, input {
 .gridListdemoBasicUsage md-grid-tile {
     transition: all 400ms ease-out 50ms;
 }
-.categorySearch {
-    padding-right: 30px;
-    padding-left: 15px;
-}
 .navBardemoBasicUsage md-content .ext-content {
     padding: 50px;
     margin: 20px;
     background-color: #FFF2E0;
+}
+.categorySearch {
+    padding-right: 30px;
+    padding-left: 15px;
+}
+.nameSearch {
+    padding-right: 30px;
 }
 .teaDetails {
     padding-left: 20px;
