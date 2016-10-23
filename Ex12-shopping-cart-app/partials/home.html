@@ -3,7 +3,7 @@
         <div class="categorySearch">
             <md-input-container>
                 <label>Search by category</label>
-                <md-select ng-model="view.categorySelected">
+                <md-select ng-model="view.categorySelected.categories">
                     <md-option></md-option>
                     <md-option ng-repeat="category in view.categoryList" ng-value="category">
                         {{ category }}
@@ -15,7 +15,7 @@
             <i class="material-icons">search</i>
             <md-input-container>
                 <label>Search by name</label>
-                <input ng-model="view.nameSearch">
+                <input ng-model="view.nameSearch.name">
             </md-input-container>
         </div>
         <div class="categorySearch">
