@@ -144,4 +144,14 @@ app.controller("teaController",function($scope) {
             $scope.sortTypeReverse = true;
         }
     }
+    $scope.view.numberOfItems = 0;
+    $scope.countItem = function(qty) {
+        (qty > 0) ? $scope.view.numberOfItems += 1 : null;
+    }
+    $scope.addToCart = function() {
+        $scope.view.cartItems = $scope.view.teaList.filter(function(teaInCart){
+            if(teaInCart.quantity > 0) return teaInCart;
+        });
+        console.log($scope.view.cartItems)
+    }
 });

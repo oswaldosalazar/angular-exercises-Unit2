@@ -30,8 +30,8 @@
         </div>
     </div>
     <div class="checkoutButton">
-        <md-button class="md-primary" aria-label="Add to cart">
-            Checkout | 0 items
+        <md-button class="md-primary" aria-label="Add to cart" ng-click="addToCart()">
+            Checkout | {{view.numberOfItems}} items
         </md-button>
     </div>
 </div>
@@ -58,10 +58,10 @@
 
             <section layout="row" layout-sm="column" layout-align="center center" layout-wrap>
                 <md-input-container>
-                    <label>Select quantity</label>
+                    <label>Quantity</label>
                     <md-select ng-model="tea.quantity">
                         <md-option></md-option>
-                        <md-option ng-repeat="qty in [1,2,3,4,5,6,7,8,9,10]" ng-value="qty" class="qtySelected">
+                        <md-option ng-repeat="qty in [1,2,3,4,5,6,7,8,9,10]" ng-value="qty" class="qtySelected" ng-click="countItem(qty)">
                             {{ qty }}
                         </md-option>
                     </md-select>
