@@ -13,25 +13,52 @@ p, div, input {
     margin: 8px;
 }
 .gridListdemoBasicUsage .green {
-    background: #b9f6ca;
+    /*background: #b9f6ca;*/
+    background: #ffffff;
 }
 .gridListdemoBasicUsage .yellow {
-    background: #ffff8d;
+    /*background: #ffff8d;*/
+    background: #ffffff;
 }
 .gridListdemoBasicUsage .blue {
-    background: #84ffff;
+    /*background: #84ffff;*/
+    background: #ffffff;
 }
 .gridListdemoBasicUsage .red {
-    background: #ff8a80;
+    /*background: #ff8a80;*/
+    background: #ffffff;
 }
 .gridListdemoBasicUsage md-grid-tile {
     transition: all 400ms ease-out 50ms;
 }
 .categorySearch {
     padding-right: 30px;
+    padding-left: 15px;
 }
 .navBardemoBasicUsage md-content .ext-content {
     padding: 50px;
     margin: 20px;
     background-color: #FFF2E0;
 }
+.teaDetails {
+    padding-left: 20px;
+}
+.qtySelected {
+    min-width: 50px;
+}
+.details {
+    margin-bottom: 5px;
+}
+.subtitle {
+    font-weight: bold;
+}
+.mainOptions {
+    justify-content: space-between;
+}
+.checkoutButton {
+    padding-right: 30px;
+    padding-bottom: 10px;
+}
+/*.cartButton{
+    background-color: black;
+}*/

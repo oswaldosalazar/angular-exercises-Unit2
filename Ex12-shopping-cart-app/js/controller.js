@@ -130,4 +130,9 @@ app.controller("teaController",function($scope) {
             "categories": ["spring", "warm","winter"]
         }
     ];
+    $scope.view.teaList = $scope.view.teaList.map(function(tea) {
+        tea.quantity = 0;
+        return tea;
+    });
+
 });

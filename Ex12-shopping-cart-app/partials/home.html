@@ -1,21 +1,28 @@
-<div class="searchOptions" layout="row">
-    <div class="categorySearch">
-        <md-input-container>
-            <label>Search by category</label>
-            <md-select ng-model="view.categorySelected">
-                <md-option></md-option>
-                <md-option ng-repeat="category in view.categoryList" ng-value="category">
-                    {{ category }}
-                </md-option>
-            </md-select>
-        </md-input-container>
+<div layout="row" flex class="mainOptions" layout-align="center center">
+    <div class="searchOptions" layout="row">
+        <div class="categorySearch">
+            <md-input-container class="">
+                <label>Search by category</label>
+                <md-select ng-model="view.categorySelected">
+                    <md-option></md-option>
+                    <md-option ng-repeat="category in view.categoryList" ng-value="category">
+                        {{ category }}
+                    </md-option>
+                </md-select>
+            </md-input-container>
+        </div>
+        <div class="nameSearch">
+            <i class="material-icons">search</i>
+            <md-input-container>
+                <label>Search by name</label>
+                <input ng-model="view.nameSearch">
+            </md-input-container>
+        </div>
     </div>
-    <div class="nameSearch">
-        <i class="material-icons">search</i>
-        <md-input-container>
-            <label>Search by name</label>
-            <input ng-model="view.nameSearch">
-        </md-input-container>
+    <div class="checkoutButton">
+        <md-button class="md-primary" aria-label="Add to cart">
+            Checkout | 0 items
+        </md-button>
     </div>
 </div>
 
@@ -25,19 +32,35 @@
             <img ng-src="{{ tea.imageUrl }}" alt="" />
         </md-grid-tile>
         <md-grid-tile class="red" md-rowspan="3" md-colspan="6" md-colspan-sm="1" md-colspan-xs="1">
-            <div flex>
+            <div class="teaDetails" flex>
                 <h2>{{ tea.name }}</h2>
-                <h4>Price: {{ tea.price/100 | currency }} <br>
-                    Ingredients: {{ tea.ingredients }} <br>
-                    Rating: {{ tea.rating }} <br>
-                    In Stock: {{ tea.inStock | true_false }} <br>
-                <ul>Categories:</h4>
-                <h5 ng-repeat="category in tea.categories"><li>{{ category }}</li></h5>
+                <h4 class="details"><span class="subtitle">Price:</span> {{ tea.price/100 | currency }}</h4>
+                <h4 class="details"><span class="subtitle">Ingredients:</span> {{ tea.ingredients }}</h4>
+                <h4 class="details"><span class="subtitle">Rating:</span> {{ tea.rating }}</h4>
+                <h4 class="details"><span class="subtitle">In Stock:</span> {{ tea.inStock | true_false }}</h4>
+                <h4 class="details"><span class="subtitle">Categories:</span></h4>
+                <ul>
+                <h5 ng-repeat="category in tea.categories" class="details"><li>{{ category }}</li></h5>
                 </ul>
             </div>
         </md-grid-tile>
 
         <md-grid-tile class="green" md-colspan="3">
+
+            <section layout="row" layout-sm="column" layout-align="center center" layout-wrap>
+                <md-input-container>
+                    <label>Select quantity</label>
+                    <md-select ng-model="tea.quantity">
+                        <md-option></md-option>
+                        <md-option ng-repeat="qty in [1,2,3,4,5,6,7,8,9,10]" ng-value="qty" class="qtySelected">
+                            {{ qty }}
+                        </md-option>
+                    </md-select>
+                </md-input-container>
+                <md-button class="md-fab md-mini md-primary" aria-label="Add to cart">
+                    <md-icon><i class="material-icons">shopping_cart</i></md-icon>
+                </md-button>
+            </section>
 
         </md-grid-tile>
 
