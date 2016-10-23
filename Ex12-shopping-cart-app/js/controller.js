@@ -138,20 +138,20 @@ app.controller("teaController",function($scope) {
     $scope.view.priceType = ["lowest", "highest"];
     $scope.assignType = function(sorting) {
         $scope.sortingType = "price";
-        if(sorting === "lowest") {
-            $scope.sortTypeReverse = false;
-        } else {
-            $scope.sortTypeReverse = true;
-        }
+        sorting === "lowest" ? $scope.sortTypeReverse = false: $scope.sortTypeReverse = true;
     }
-    $scope.view.numberOfItems = 0;
-    $scope.countItem = function(qty) {
-        (qty > 0) ? $scope.view.numberOfItems += 1 : null;
+    $scope.view.cartItems = $scope.view.teaList;
+    $scope.addToCart = function(addedTea) {
+        $scope.view.numberOfItems = 0;
+        $scope.view.cartItems.forEach(function(updatedTea) {
+            updatedTea._id === addedTea._id ? updatedTea.quantity = addedTea.quantity: null;
+            updatedTea.quantity > 0 ? $scope.view.numberOfItems += 1: null;
+        });
     }
-    $scope.addToCart = function() {
-        $scope.view.cartItems = $scope.view.teaList.filter(function(teaInCart){
+    $scope.checkout = function () {
+        $scope.view.checkout = $scope.view.cartItems.filter(function(teaInCart){
             if(teaInCart.quantity > 0) return teaInCart;
         });
-        console.log($scope.view.cartItems)
+        console.log($scope.view.checkout);
     }
 });
