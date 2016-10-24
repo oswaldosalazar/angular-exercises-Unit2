@@ -1,0 +1,53 @@
+<div layout="row" flex class="mainOptions" layout-align="center center">
+    <div class="searchOptions" layout="row">
+        <div class="categorySearch">
+            <h2>My Shopping Bag</h2>
+        </div>
+    </div>
+    <div class="checkoutButton">
+        <h2>Total: {{ view.total/100 | currency}}</h2>
+    </div>
+</div>
+
+<div ng-cloak ng-repeat="tea in view.cart | filter:view.categorySelected | filter:view.nameSearch | orderBy:sortingType:sortTypeReverse" class="gridListdemoBasicUsage">
+    <md-grid-list layout="row" layout-sm="column" md-cols-xs="6" md-cols-sm="6" md-cols-md="12" md-cols-gt-md="12" md-row-height-gt-md="6:6" md-row-height="6:6" md-gutter="12px" md-gutter-gt-sm="8px">
+        <md-grid-tile class="blue" md-rowspan="3" md-colspan="3" md-colspan-sm="1" md-colspan-xs="1">
+            <img ng-src="{{ tea.imageUrl }}" alt="" />
+        </md-grid-tile>
+        <md-grid-tile class="red" md-rowspan="3" md-colspan="6" md-colspan-sm="1" md-colspan-xs="1">
+            <div class="teaDetails" flex>
+                <h2>{{ tea.name }}</h2>
+                <h4 class="details"><span class="subtitle">Subtotal:</span> {{ tea.price/100 * tea.quantity | currency }}</h4>
+                <h4 class="details"><span class="subtitle">Ingredients:</span> {{ tea.ingredients }}</h4>
+                <h4 class="details"><span class="subtitle">Rating:</span> {{ tea.rating }}</h4>
+                <h4 class="details"><span class="subtitle">In Stock:</span> {{ tea.inStock | true_false }}</h4>
+                <h4 class="details"><span class="subtitle">Categories:</span></h4>
+                <ul>
+                <h5 ng-repeat="category in tea.categories" class="details"><li>{{ category }}</li></h5>
+                </ul>
+            </div>
+        </md-grid-tile>
+
+        <md-grid-tile class="green" md-colspan="3">
+
+            <section layout="row" layout-sm="column" layout-align="center center" layout-wrap>
+                <md-input-container>
+                    <label>Edit Quantity</label>
+                    <md-select ng-model="tea.quantity" ng-change="calcTotal()">
+                        <md-option ng-repeat="qty in [0,1,2,3,4,5,6,7,8,9,10]" ng-value="qty" class="qtySelected">
+                            {{ qty }}
+                        </md-option>
+                    </md-select>
+                </md-input-container>
+                <md-button class="md-fab md-mini md-primary" aria-label="Add to cart" ng-click="addToCart(tea)">
+                    <md-icon><i class="material-icons">clear</i></md-icon>
+                </md-button>
+            </section>
+
+        </md-grid-tile>
+
+        <md-grid-tile class="yellow" md-colspan="3" md-rowspan="2">
+
+        </md-grid-tile>
+    </md-grid-list>
+</div>

@@ -2,7 +2,7 @@ app.controller("navController", function($scope) {
      $scope.currentNavItem = 'page1';
 })
 
-app.controller("teaController",function($scope) {
+app.controller("teaController",function($scope, cartService) {
     $scope.view = {};
     $scope.view.teaList = [
         {
@@ -129,6 +129,7 @@ app.controller("teaController",function($scope) {
     ];
     $scope.view.nameSearch = '';
     $scope.view.categorySelected = '';
+    $scope.view.checkout = [];
     $scope.view.categoryList = ('awesome cold dark dry hot lucid spring summer warm winter').split(' ').map(function (category) { return category });
     $scope.view.teaList = $scope.view.teaList.map(function(tea) {
         tea.quantity = 0;
@@ -144,14 +145,30 @@ app.controller("teaController",function($scope) {
     $scope.addToCart = function(addedTea) {
         $scope.view.numberOfItems = 0;
         $scope.view.cartItems.forEach(function(updatedTea) {
-            updatedTea._id === addedTea._id ? updatedTea.quantity = addedTea.quantity: null;
-            updatedTea.quantity > 0 ? $scope.view.numberOfItems += 1: null;
+            if(updatedTea._id === addedTea._id) updatedTea.quantity = addedTea.quantity;
+        });
+        $scope.view.cartItems.forEach(function(obj){
+            if(obj.quantity >= 1) $scope.view.numberOfItems +=1;
         });
     }
     $scope.checkout = function () {
         $scope.view.checkout = $scope.view.cartItems.filter(function(teaInCart){
             if(teaInCart.quantity > 0) return teaInCart;
         });
-        console.log($scope.view.checkout);
+        cartService.receiveCart($scope.view.checkout);
     }
 });
+
+app.controller("cartController", function($scope, cartService) {
+    $scope.view = {};
+    $scope.view.cart = cartService.cart;
+    $scope.calcTotal = function() {
+        $scope.view.total = 0;
+        $scope.view.cart.forEach(function(obj){
+            if(obj.quantity > 0) {
+                $scope.view.total += obj.quantity * obj.price;
+            }
+        });
+    }
+    $scope.calcTotal()
+})

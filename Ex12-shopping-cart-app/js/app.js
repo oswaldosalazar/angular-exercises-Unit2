@@ -6,6 +6,10 @@ app.config(function($routeProvider, $locationProvider) {
         templateUrl: 'partials/home.html',
         controller: 'teaController'
     })
+    .when('/cart', {
+        templateUrl: 'partials/cart.html',
+        controller: 'cartController'
+    })
     $locationProvider.html5Mode(true);
 });
 
