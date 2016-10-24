@@ -133,6 +133,7 @@ app.controller("teaController",function($scope, cartService) {
     $scope.view.categoryList = ('awesome cold dark dry hot lucid spring summer warm winter').split(' ').map(function (category) { return category });
     $scope.view.teaList = $scope.view.teaList.map(function(tea) {
         tea.quantity = 0;
+        tea.added = false;
         return tea;
     });
     $scope.sortingType = "_id";
@@ -142,18 +143,22 @@ app.controller("teaController",function($scope, cartService) {
         sorting === "lowest" ? $scope.sortTypeReverse = false: $scope.sortTypeReverse = true;
     }
     $scope.view.cartItems = $scope.view.teaList;
-    $scope.addToCart = function(addedTea) {
+    $scope.countItems = function() {
         $scope.view.numberOfItems = 0;
+        $scope.view.cartItems.forEach(function(obj){
+            if(obj.added) $scope.view.numberOfItems +=1;
+        });
+    }
+    $scope.addToCart = function(addedTea) {
         $scope.view.cartItems.forEach(function(updatedTea) {
             if(updatedTea._id === addedTea._id) updatedTea.quantity = addedTea.quantity;
         });
-        $scope.view.cartItems.forEach(function(obj){
-            if(obj.quantity >= 1) $scope.view.numberOfItems +=1;
-        });
+        addedTea.added = true;
+        $scope.countItems();
     }
-    $scope.checkout = function () {
+    $scope.checkout = function() {
         $scope.view.checkout = $scope.view.cartItems.filter(function(teaInCart){
-            if(teaInCart.quantity > 0) return teaInCart;
+            if(teaInCart.quantity > 0 && teaInCart.added) return teaInCart;
         });
         cartService.receiveCart($scope.view.checkout);
     }
