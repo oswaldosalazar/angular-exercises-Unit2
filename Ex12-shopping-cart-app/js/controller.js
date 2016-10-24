@@ -156,6 +156,7 @@ app.controller("teaController",function($scope, cartService) {
         addedTea.added = true;
         $scope.countItems();
     }
+
     $scope.checkout = function() {
         $scope.view.checkout = $scope.view.cartItems.filter(function(teaInCart){
             if(teaInCart.quantity > 0 && teaInCart.added) return teaInCart;
