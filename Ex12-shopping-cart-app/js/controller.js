@@ -171,4 +171,8 @@ app.controller("cartController", function($scope, cartService) {
         });
     }
     $scope.calcTotal()
+    $scope.delete = function(item) {
+        $scope.view.cart.splice($scope.view.cart.indexOf(item),1);
+        $scope.calcTotal()
+    }
 })
