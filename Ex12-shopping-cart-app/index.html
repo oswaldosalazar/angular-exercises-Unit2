@@ -4,37 +4,29 @@
         <base href="/">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <title>Le thé</title>
-        <link rel="stylesheet" href="http://ajax.googleapis.com/ajax/libs/angular_material/1.1.0/angular-material.min.css">
+        <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/angular_material/1.1.0/angular-material.min.css">
         <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
       rel="stylesheet">
         <script src="https://use.typekit.net/tdh2twx.js"></script>
         <script>try{Typekit.load({ async: true });}catch(e){}</script>
         <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular.min.js"></script>
-        <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular-route.js"></script>
-        <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular-animate.min.js"></script>
-        <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular-aria.min.js"></script>
-        <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular-messages.min.js"></script>
-        <script src="http://ajax.googleapis.com/ajax/libs/angular_material/1.1.0/angular-material.min.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular-route.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular-animate.min.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular-aria.min.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular-messages.min.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/angular_material/1.1.0/angular-material.min.js"></script>
         <link rel="stylesheet" href="styles.css" media="screen" title="no title">
     </head>
     <body ng-cloak>
-    <div ng-controller="navController" ng-cloak>
-        <md-content class="md-padding">
-            <md-nav-bar md-selected-nav-item="currentNavItem" nav-bar-aria-label="navigation links">
-                <h1>LE <i class="material-icons"> free_breakfast</i> THÉ </h1>
-                <md-nav-item md-nav-href="/" name="homePage">Home</md-nav-item>
-                <md-nav-item md-nav-click="goto('aboutPage')" name="aboutPage">About</md-nav-item>
-                <md-nav-item md-nav-click="goto('contactPage')" name="contactPage">Contact</md-nav-item>
-                <!-- these require actual routing with ui-router or ng-route, so they won't work in the demo -->
-            </md-nav-bar>
-                <!-- <div class="ext-content">
-                External content for `<span>{{currentNavItem}}</span>`
-                </div> -->
-        </md-content>
-    </div>
-
-        <div class="pageTitle">
-
+        <div ng-controller="navController" ng-cloak>
+            <md-content class="md-padding">
+                <md-nav-bar md-selected-nav-item="currentNavItem" nav-bar-aria-label="navigation links">
+                    <h1>LE <i class="material-icons"> free_breakfast</i> THÉ </h1>
+                    <md-nav-item md-nav-href="/" name="homePage">Home</md-nav-item>
+                    <md-nav-item md-nav-click="goto('aboutPage')" name="aboutPage">About</md-nav-item>
+                    <md-nav-item md-nav-click="goto('contactPage')" name="contactPage">Contact</md-nav-item>
+                </md-nav-bar>
+            </md-content>
         </div>
 
         <div ng-view></div>

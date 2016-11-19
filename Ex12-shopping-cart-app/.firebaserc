@@ -1,0 +1,6 @@
+{
+  "projects": {
+    "staging": "teashopping-5fe05",
+    "default": "teashopping-5fe05"
+  }
+}
